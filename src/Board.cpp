@@ -82,10 +82,7 @@ void Board::loadLevel(string fileName)
       }
       for(int j = 0; j < m_levelCols; j++)
       {
-        //i * 16/j* 16 cuz each tile is 16pixels
-        //m_board[i][j] =  findTile(tokens.at(i), i * 16, j * 16);
-        m_board[i][j] = new Tile(tokens.at(i), i*16, j*16);
-        cout << tokens.at(i) << "rowPos: " << i*16 + 1 << " col " << j * 16 + 1 << endl;
+        m_board[i][j] = new Tile(tokens.at(i), i * m_tileSize, j * m_tileSize);
       }
     }
 

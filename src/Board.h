@@ -9,6 +9,8 @@
 
 using namespace std;
 
+const int m_tileSize = 16;
+
 class Board
 {
 public:
