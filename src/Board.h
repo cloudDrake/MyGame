@@ -5,11 +5,12 @@
 #include <iostream>
 #include <fstream>
 
+#include "../lib/tinyxml/tinyxml.h"
 #include "Tile.h"
 
 using namespace std;
 
-const int m_tileSize = 16;
+
 
 class Board
 {
@@ -17,6 +18,7 @@ public:
   Board();
   void draw(sf::RenderWindow & window);
   void update();
+  void loadLevel(string fileName, bool isXML);
   void loadLevel(string fileName);
 private:
   vector<string> splitStr(string str, char delim);

@@ -6,12 +6,13 @@
 
 using namespace std;
 
+const int m_tileSize = 16;
 const string m_spritesheet = "./Images/overworldtiles.png";
 
 class Tile
 {
 public:
-  Tile(string fileName, int hPos, int wPos);
+  Tile(int tileRow, int tileCol, int hPos, int wPos);
   void draw(sf::RenderWindow & window);
   void loadSprite();
 
