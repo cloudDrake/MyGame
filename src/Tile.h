@@ -8,6 +8,7 @@ using namespace std;
 
 const int m_tileSize = 16;
 const string m_spritesheet = "./Images/overworldtiles.png";
+//const string m_spritesheet = "./Images/tileset_overworld.png";
 
 class Tile
 {

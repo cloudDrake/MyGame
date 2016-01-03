@@ -7,7 +7,7 @@ int main()
 
     //Load/Create Level
     Board * level = new Board();
-    level->loadLevel("./Levels/Test.txt");
+    level->loadLevel("./Levels/Overworld.txt");
     // let's define a view
     sf::View view(sf::FloatRect(0, 0, 192, 192));
 
