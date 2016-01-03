@@ -10,7 +10,7 @@ Tile::Tile(int tileRow, int tileCol, int hPos, int wPos)
     m_sprite.setTexture(m_texture);
     int spriteXPos = tileRow * m_tileSize + tileRow + 1;
     int spriteYPos = tileCol * m_tileSize + tileCol + 1;
-    m_sprite.setTextureRect(sf::IntRect(spriteXPos, spriteYPos, m_tileSize, m_tileSize));
+    m_sprite.setTextureRect(sf::IntRect(spriteYPos, spriteXPos, m_tileSize, m_tileSize));
     m_sprite.setPosition(wPos, hPos);
   }
 

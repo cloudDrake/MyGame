@@ -87,8 +87,6 @@ void Board::loadLevel(string fileName)
       for(int j = 0; j < m_levelCols; j++)
       {
         int rowCol = atoi(tokens.at(j).c_str());
-        int row = rowCol / 10;
-        int col = rowCol % 10;
         m_board[i][j] = new Tile(rowCol / 10, rowCol % 10, i * m_tileSize, j * m_tileSize);
       }
     }
