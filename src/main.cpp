@@ -9,7 +9,7 @@ int main()
     Board * level = new Board();
     level->loadLevel("./Levels/Test.txt");
     // let's define a view
-    sf::View view(sf::FloatRect(0, 0, 256, 256));
+    sf::View view(sf::FloatRect(0, 0, 192, 192));
 
 
     while (window.isOpen())
