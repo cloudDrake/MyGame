@@ -10,9 +10,10 @@ This is written in C++ with the SFML libraries to aid in graphics.
 
 Contributing:
 -git clone https://github.com/SirNyble/MyGame
+
 -If you don't have SFML libraries you must install. If you are running Ubuntu,
 use: sudo apt-get install libsfml-dev
--cd into the directory and run: make
-- to run: ./MyGame
 
-http://zfgc.com/forum/index.php?topic=33810.0
+-cd into the directory and run: make
+
+- to run: ./MyGame
