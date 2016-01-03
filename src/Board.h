@@ -5,7 +5,6 @@
 #include <iostream>
 #include <fstream>
 
-#include "../lib/tinyxml/tinyxml.h"
 #include "Tile.h"
 
 using namespace std;
