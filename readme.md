@@ -1,6 +1,6 @@
 MyGame
 
-Let me know a title for my game!
+Let me know a title for my game! Still no idea for the title - aBlueSky
 
 This is basically just an overhead 2D adventure game. I'm doing this for learning
 purposes to see how larger games are built. I'm doing this without a tutorial,
