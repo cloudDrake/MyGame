@@ -71,7 +71,7 @@ void Board::loadLevel(string fileName)
     //Reserve Board size
     m_levelRows = atoi(tokens.at(0).c_str());
     m_levelCols = atoi(tokens.at(1).c_str());
-    m_board.resize(m_levelCols, vector<Tile*>(m_levelRows, NULL));
+    m_board.resize(m_levelCols, vector<Tile*>(m_levelRows, nullptr));
 
     //Now fill the Board with the files Tiles
     for(int i = 0; i < m_levelRows; i++)
