@@ -89,7 +89,7 @@ void Board::loadLevel(string fileName)
         vector<string> tileInfo = splitStr(tokens.at(j), '-');
         int rows = atoi(tileInfo[0].c_str());
         int cols = atoi(tileInfo[1].c_str());
-        m_board[i][j] = new Tile(rows, cols, i * m_tileSize, j * m_tileSize);
+        m_board[i][j] = new Tile(rows, cols, i * Tile::m_tileSize, j * Tile::m_tileSize);
       }
     }
 

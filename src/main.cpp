@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "Board.h"
+#include "Player.h"
 
 int main()
 {
@@ -8,6 +9,7 @@ int main()
     //Load/Create Level
     Board * level = new Board();
     level->loadLevel("./Levels/Overworld.txt");
+    Player * player1 = new Player("Images/hero.png");
     // let's define a view
     sf::View view(sf::FloatRect(0, 0, 192, 192));
 
@@ -25,6 +27,7 @@ int main()
         window.setView(view);
         window.clear(); //sf::Color(200, 0, 0)
         level->draw(window);
+        player1->draw(window);
         //window.draw();
         window.display();
     }

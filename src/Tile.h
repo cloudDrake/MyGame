@@ -6,7 +6,7 @@
 
 using namespace std;
 
-const int m_tileSize = 16;
+
 const string m_spritesheet = "./Images/overworldtiles.png";
 //const string m_spritesheet = "./Images/tileset_overworld.png";
 
@@ -16,7 +16,7 @@ public:
   Tile(int tileRow, int tileCol, int hPos, int wPos);
   void draw(sf::RenderWindow & window);
   void loadSprite();
-
+  static const int m_tileSize = 16;
 private:
   bool m_isCollidable;
   sf::Texture m_texture;
