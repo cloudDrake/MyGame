@@ -10,8 +10,14 @@ int main()
     Board * level = new Board();
     level->loadLevel("./Levels/Overworld.txt");
     Player * player1 = new Player("Images/hero.png");
-    // let's define a view
+    // let's define the views.
     sf::View view(sf::FloatRect(0, 0, 192, 192));
+    sf::View minimap(sf::FloatRect(0,0,50,50));
+    //view.move(dx, dy) to move the view.
+
+    //set the viewports for the views.
+    view.setViewport(sf::FloatRect(0.0f, 0.0f, 1, 1));
+    minimap.setViewport(sf::FloatRect(0.75f, 0.75f, 0.25f, 0.25f));
 
     //fps/update control variables.
     sf::Clock clock;
@@ -26,7 +32,9 @@ int main()
         //event loop, keybindings.
         while (window.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
+            if (event.type == sf::Event::Closed
+                  || (event.type == sf::Event::KeyPressed
+                      && event.key.code == sf::Keyboard::Escape))
                 window.close();
             else
             //check if the event was a keypressed event.
@@ -71,8 +79,12 @@ int main()
         //view.move(0, 1);
         // activate it
         window.setView(view);
-        window.clear(); //sf::Color(200, 0, 0)
+        //window.clear(); //sf::Color(200, 0, 0)
         level->draw(window);
+        player1->draw(window);
+
+        //Draw to minimap
+        window.setView(minimap);
         player1->draw(window);
         //window.draw();
         window.display();
