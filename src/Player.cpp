@@ -19,7 +19,12 @@ void Player::draw(sf::RenderWindow &window)
   window.draw(m_sprite);
 }
 
+void Player::moveSprite(int deltaX, int deltaY)
+{
+  m_sprite.move(deltaX, deltaY);
+}
+
 void Player::update()
 {
-  
+
 }
