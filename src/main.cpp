@@ -53,6 +53,20 @@ int main()
                     break;
                 }
             }
+            else
+            if (event.type == sf::Event::MouseButtonPressed) {
+              switch(event.mouseButton.button)
+              {
+                case sf::Mouse::Left:
+                  cout << "Left Mouse X: " << event.mouseButton.x << endl;
+                  cout << "Left Mouse Y: " << event.mouseButton.y << endl;
+                break;
+                case sf::Mouse::Right:
+                  cout << "Right Mouse X: " << event.mouseButton.x << endl;
+                  cout << "Right Mouse Y: " << event.mouseButton.y << endl;
+                break;
+              }
+            }
         }
         //view.move(0, 1);
         // activate it
