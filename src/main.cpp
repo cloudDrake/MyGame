@@ -97,8 +97,19 @@ int main()
 
         if(newViewCenterX < view.getSize().x)
           newViewCenterX = view.getSize().x/2;
+        else
+        if (newViewCenterX > (window.getSize().x - view.getSize().x/2))
+        {
+          newViewCenterX = window.getSize().x - view.getSize().x/2;
+        }
         if(newViewCenterY < view.getSize().y)
           newViewCenterY = view.getSize().y/2;
+        else
+        if (newViewCenterY > (window.getSize().y - view.getSize().y/2))
+        {
+          newViewCenterY = window.getSize().y - view.getSize().y/2;
+        }
+        
         view.setCenter(newViewCenterX, newViewCenterY);
 
         // activate it
