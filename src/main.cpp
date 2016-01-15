@@ -11,8 +11,11 @@ int main()
     level->loadLevel("./Levels/Overworld.txt");
     Player * player1 = new Player("Images/hero.png");
     // let's define the views.
-    sf::View view(sf::FloatRect(0, 0, 192, 192));
-    sf::View minimap(sf::FloatRect(0,0,50,50));
+    //old view
+    sf::View view(sf::FloatRect(0, 0, 1920, 1920));
+    view.zoom(0.1f);
+    //sf::View view(sf::FloatRect(0, 0, window.getSize().x, window.getSize().y));
+    sf::View minimap(sf::FloatRect(0, 0, 192, 192));
     //view.move(dx, dy) to move the view.
 
     //set the viewports for the views.
@@ -33,8 +36,8 @@ int main()
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed
-                  || (event.type == sf::Event::KeyPressed
-                      && event.key.code == sf::Keyboard::Escape))
+                || (event.type == sf::Event::KeyPressed
+                    && event.key.code == sf::Keyboard::Escape))
                 window.close();
             else
             //check if the event was a keypressed event.
@@ -45,24 +48,29 @@ int main()
                 {
                     case sf::Keyboard::W:
                       cout << "W Pressed." << endl;
+                      //TODO: Check boundary
                       player1->moveSprite(0,-16);
                     break;
                     case sf::Keyboard::A:
                       cout << "A Pressed." << endl;
+                      //TODO: Check boundary
                       player1->moveSprite(-16,0);
                     break;
                     case sf::Keyboard::S:
                       cout << "S Pressed." << endl;
+                      //TODO: Check boundary
                       player1->moveSprite(0,16);
                     break;
                     case sf::Keyboard::D:
                       cout << "D Pressed." << endl;
+                      //TODO: Check boundary
                       player1->moveSprite(16,0);
                     break;
                 }
             }
             else
             if (event.type == sf::Event::MouseButtonPressed) {
+              //TODO: Add mouse events.
               switch(event.mouseButton.button)
               {
                 case sf::Mouse::Left:
@@ -77,14 +85,33 @@ int main()
             }
         }
         //view.move(0, 1);
+
+        //Keep view centered on the player.
+        //TODO: Keep within map boundaries for:
+        //  TOP and LEFT (DONE?)
+        //  TOP and RIGHT
+        //  BOTTOM and LEFT
+        //  BOTTOM and RIGHT
+        int newViewCenterX = player1->getSprite().getPosition().x;
+        int newViewCenterY = player1->getSprite().getPosition().y;
+
+        if(newViewCenterX < view.getSize().x)
+          newViewCenterX = view.getSize().x/2;
+        if(newViewCenterY < view.getSize().y)
+          newViewCenterY = view.getSize().y/2;
+        view.setCenter(newViewCenterX, newViewCenterY);
+
         // activate it
         window.setView(view);
-        //window.clear(); //sf::Color(200, 0, 0)
+
+        window.clear(); //sf::Color(200, 0, 0)
+
         level->draw(window);
         player1->draw(window);
 
         //Draw to minimap
         window.setView(minimap);
+        level->draw(window);
         player1->draw(window);
         //window.draw();
         window.display();

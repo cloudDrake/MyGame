@@ -24,6 +24,11 @@ void Player::moveSprite(int deltaX, int deltaY)
   m_sprite.move(deltaX, deltaY);
 }
 
+const sf::Sprite& Player::getSprite() const
+{
+  return m_sprite;
+}
+
 void Player::update()
 {
 
