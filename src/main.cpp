@@ -10,23 +10,18 @@ int main()
     Board * level = new Board();
     level->loadLevel("./Levels/Overworld.txt");
     Player * player1 = new Player("Images/hero.png");
+    //TODO: Determine proper speed for player1.
+    int playerSpeed = 4;
     // let's define the views.
-    //old view
-    sf::View view(sf::FloatRect(0, 0, 1920, 1920));
+    sf::View view(sf::FloatRect(0, 0, Tile::m_tileSize*120, Tile::m_tileSize*120));
     view.zoom(0.1f);
     //sf::View view(sf::FloatRect(0, 0, window.getSize().x, window.getSize().y));
-    sf::View minimap(sf::FloatRect(0, 0, 192, 192));
+    sf::View minimap(sf::FloatRect(0, 0, Tile::m_tileSize*12, Tile::m_tileSize*12));
     //view.move(dx, dy) to move the view.
 
     //set the viewports for the views.
     view.setViewport(sf::FloatRect(0.0f, 0.0f, 1, 1));
     minimap.setViewport(sf::FloatRect(0.75f, 0.75f, 0.25f, 0.25f));
-
-    //fps/update control variables.
-    sf::Clock clock;
-    sf::Time lastTime = clock.restart(); //System time
-    double delta = 0.0; //Diff of lastTime and currentTime
-    double ns = 1000000000.0/60.0; //unit of a nanosecond.
 
     //Main game loop
     while (window.isOpen())
@@ -49,22 +44,22 @@ int main()
                     case sf::Keyboard::W:
                       cout << "W Pressed." << endl;
                       //TODO: Check boundary
-                      player1->moveSprite(0,-16);
+                      player1->moveSprite(0,-playerSpeed);
                     break;
                     case sf::Keyboard::A:
                       cout << "A Pressed." << endl;
                       //TODO: Check boundary
-                      player1->moveSprite(-16,0);
+                      player1->moveSprite(-playerSpeed,0);
                     break;
                     case sf::Keyboard::S:
                       cout << "S Pressed." << endl;
                       //TODO: Check boundary
-                      player1->moveSprite(0,16);
+                      player1->moveSprite(0,playerSpeed);
                     break;
                     case sf::Keyboard::D:
                       cout << "D Pressed." << endl;
                       //TODO: Check boundary
-                      player1->moveSprite(16,0);
+                      player1->moveSprite(playerSpeed,0);
                     break;
                 }
             }
@@ -87,36 +82,36 @@ int main()
         //view.move(0, 1);
 
         //Keep view centered on the player.
-        //TODO: Keep within map boundaries for:
-        //  TOP and LEFT (DONE?)
-        //  TOP and RIGHT
-        //  BOTTOM and LEFT
-        //  BOTTOM and RIGHT
+        //Handle view movement for X axis.
         int newViewCenterX = player1->getSprite().getPosition().x;
         int newViewCenterY = player1->getSprite().getPosition().y;
 
-        if(newViewCenterX < view.getSize().x)
+        if(newViewCenterX < (view.getSize().x/2))
           newViewCenterX = view.getSize().x/2;
         else
         if (newViewCenterX > (window.getSize().x - view.getSize().x/2))
         {
           newViewCenterX = window.getSize().x - view.getSize().x/2;
         }
-        if(newViewCenterY < view.getSize().y)
+
+        //Handle view movement for Y axis.
+        if(newViewCenterY < (view.getSize().y/2))
           newViewCenterY = view.getSize().y/2;
         else
         if (newViewCenterY > (window.getSize().y - view.getSize().y/2))
         {
           newViewCenterY = window.getSize().y - view.getSize().y/2;
         }
-        
+
+        //Set the view centered on the player.
         view.setCenter(newViewCenterX, newViewCenterY);
 
-        // activate it
+        // activate the game view.
         window.setView(view);
 
         window.clear(); //sf::Color(200, 0, 0)
 
+        //Draw to the game view.
         level->draw(window);
         player1->draw(window);
 
